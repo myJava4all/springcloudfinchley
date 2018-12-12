@@ -1,0 +1,20 @@
+server:
+  port: 8018
+
+spring:
+  application:
+    name: zuul-server
+
+eureka:
+  client:
+    service-url:
+      default: http://localhost:8761/eureka
+
+zuul:
+  routes:
+    apia:
+      path: /api-a/**
+      serviceId: feign-server1
+    apib:
+      path: /api-b/**
+      serviceId: service-ribbon

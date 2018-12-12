@@ -1,0 +1,10 @@
+server:
+  port: 8013
+spring:
+  application:
+    name: user_server1
+eureka:
+  client:
+    service-url:
+      default: http://localhost:8761/eureka
+
