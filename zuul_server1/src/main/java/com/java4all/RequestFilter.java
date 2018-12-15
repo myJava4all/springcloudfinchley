@@ -32,18 +32,19 @@ public class RequestFilter extends ZuulFilter{
     return "pre";
   }
 
-  /**过滤的顺序*/
+  /**过滤的顺序，数字越小越先执行*/
   @Override
   public int filterOrder() {
     return 0;
   }
 
-  /**这里可以写逻辑判断，是否要过滤，本文true,永远过滤*/
+  /**这里可以写逻辑判断，是否要过滤，true表示过滤，false表示不过滤*/
   @Override
   public boolean shouldFilter() {
     return true;
   }
 
+  /**filter需要执行的具体操作*/
   @Override
   public Object run() throws ZuulException {
     RequestContext currentContext = RequestContext.getCurrentContext();
@@ -51,13 +52,16 @@ public class RequestFilter extends ZuulFilter{
     String token = request.getParameter("token");
     if(StringUtils.isEmpty(token)){
       logger.warn("=======>token is empty");
-      currentContext.setSendZuulResponse(false);
+      currentContext.setSendZuulResponse(false);//不对其进行路由
       currentContext.setResponseStatusCode(401);
       try {
         currentContext.getResponse().getWriter().write("token is empty");
       }catch (Exception ex){
         ex.printStackTrace();
       }
+    }else {
+      currentContext.setSendZuulResponse(true);//进行路由
+      currentContext.setResponseStatusCode(200);
     }
     return null;
   }

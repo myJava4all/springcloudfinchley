@@ -22,7 +22,7 @@ public class RibbonController {
   private RibbonService ribbonService;
 
   @GetMapping(value = "getCompany")
-  public String getCompany(String id){
+  public String getCompany(String id,String token){
     String company = ribbonService.getCompany(id);
     System.out.println(company);
     return company;

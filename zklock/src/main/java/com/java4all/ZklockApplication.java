@@ -19,7 +19,6 @@ public class ZklockApplication {
 	public static void main(String[] args) {
 		 SpringApplication.run(ZklockApplication.class, args);
 	}
-
 //	@Bean
 //	public RedissonClient redissonClient(){
 //		Config config = new Config();

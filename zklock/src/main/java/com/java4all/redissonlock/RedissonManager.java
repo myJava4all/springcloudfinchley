@@ -3,6 +3,7 @@ package com.java4all.redissonlock;
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
+import org.springframework.stereotype.Component;
 
 /**
  * description:
@@ -10,6 +11,7 @@ import org.redisson.config.Config;
  * @author wangzhongxiang
  * @date 2018/11/28 20:04
  */
+@Component
 public class RedissonManager {
 
   private static Redisson redisson;

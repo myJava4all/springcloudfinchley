@@ -22,7 +22,7 @@ public class FeignController {
   FeignService feignService;
 
   @GetMapping("getCompany")
-  public String getCompany(String id){
+  public String getCompany(String id,String token){
     String company = feignService.getCompany(id);
     System.out.println(company);
     return company;
